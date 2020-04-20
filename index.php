@@ -143,10 +143,127 @@
 
 
         // echo var_dump($listaDeUsuarios[$usuario]);
-        echo $listaDeUsuarios["usuario1"]["nome"]
+        echo $listaDeUsuarios["usuario1"]["nome"];
+        var_dump($listaDeUsuarios);
     
 
     ?>
+
+    <br>
+
+    <h1>Testando aula</h1>
+    
+    <?php
+
+        $diaEnsolarado = true;
+        if ($diaEnsolarado == true) {
+            echo "Vamos para a praia!";
+        } else {
+            echo "Cuidado com a chuva";
+        }
+    
+    ?>
+    <br>
+    <?php
+
+        $idade = 25;
+        if ($idade < 16){
+            echo "Não pode votar";
+        } else if ($idade ==16 && $idadae==17) {
+            echo "Voto opcional";
+        } elseif ($idade>=18){
+            echo "Voto obrigatório";
+        }   
+    ?>
+    <br>
+    <br>
+    <?php
+        $numero1 = 32;
+        $numero2 = 58;
+
+        $maior = $numero1 > $numero2 ? $numero1 : $numero2;
+        echo $maior;
+    ?>
+
+    <hr>
+
+    <h1>FOR</h1>
+
+    <?php
+        $lista = ["pao", "Leite", "Suco", "Bolacha"];
+        $lista[] = "Sabao";
+        echo "Lista de compras <br>";
+        for ($i=0; $i<count($lista); $i++){
+            echo $lista [$i]."<br>";
+        }
+    
+    ?>
+
+    <hr>
+    <h1>WHILE E DO-WHILE</h1>
+
+    <?php
+
+        $array = ["Opa", "Olá", "Eu sou o Vinicíus", "chega"];
+        $i=0;
+        shuffle($array);
+        while($array[$i]!="chega"){
+            echo $array[$i]."<br>";
+            $i++;
+        }
+    
+    ?>
+    <br>
+    <br>
+    <?php
+
+        $array = ["Opa", "Olá", "Eu sou o Vinicíus", "chega"];
+        $i=0;
+        do{
+            echo $array[$i]."<br>";
+            $i++;
+        }
+        while($array[$i]!="chega")
+
+    ?>
+
+    <?php
+        $quantidade = 5;
+        while ($quantidade >0){
+            echo $quantidade."<br>";
+            $quantidade--;
+        }
+    
+    ?>
+    <hr>
+    <h1>Keyowrds</h1>
+    
+    <?php
+        $i=0;
+        for($i=0; $i<5;$i++){
+            if($i==3){
+            break;
+            }
+            echo "valor do i:".$i; 
+        }
+    ?>
+
+    <?php
+        $i=0;
+        for($i=0; $i<5;$i++){
+            if($i==3){
+            continue;
+            }
+            echo "valor do i:".$i; 
+        }
+    ?>
+
+    <hr>
+    <h1>foreach</h1>
+
+    <?php?>
+
+    
 
 </body>
 </html>
