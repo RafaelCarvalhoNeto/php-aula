@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aula 01 - PHP</title>
+    <link rel="stylesheet" href="./css/style.css">
+    
 </head>
 <body>
     <?php
@@ -19,7 +21,7 @@
     </h1>
 
     <hr>
-    <h1>Condicionais</h1>
+    <h2>Condicionais</h2>
     <p>IL / ELSE</p>
     <p>Crie uma condição que valide ser uma pessoa pode votar ou não<. De forma que se a pessoa tiver a idade entre 16 e 17, iremos mostrar na tela Voto facultativo, caso contrário, se for o maior de idade iremos mostrar na tela voto obrigatório, e caso for menor de 16 ou maior que 64 não vota<p>
 
@@ -40,7 +42,7 @@
     R: Foi criado no código a função podeVotar e foi informado como parâmetro o valor 17, como resultado da função tivemos: <?php echo podeVotar (17); ?>
 
     <hr>
-    <p>SWITCH CASE</p>
+    <h2>SWITCH CASE</h2>
 
     <p>Valide se um número é 0 e retorne que é igual a 0, se é 1 e retorne que é igual a 1, ou se é 2 e retorno que é igual a 2. Caso contrário retornque o número é maior que 2. Utilizando o Switch case</p>
 
@@ -107,7 +109,7 @@
 
     <hr>
 
-    <p>Array Associativo</p>
+    <h2>Array Associativo</h2>
 
     <?php
         // o array associativo nos dá a possibilidade de atribuir valores as nossas posições
@@ -124,8 +126,10 @@
         // montando frase pegando uma posição do array sem percorrer ele todo
         echo "O nome do usuário é ". $usuario["nome"]
     ?>
+    <br>
+    <hr>
 
-    <p>Array de arrays</p>
+    <h2>Array de arrays</h2>
 
     <?php
         $listaDeUsuarios = [
@@ -135,133 +139,82 @@
                 "senha" => "123456"
             ],
             "usuario2" => [
+                "nome" => "Marcelo",
+                "email" => "mdiament@digitalhouse.com",
+                "senha" => "789101"
+            ],
+            "usuario3" => [
                 "nome" => "Rafael",
-                "email" => "rcarvalho@digitalhouse.com",
+                "email" => "mdiament@digitalhouse.com",
+                "senha" => "789101"
+            ],
+            "usuario4" => [
+                "nome" => "Junior",
+                "email" => "mdiament@digitalhouse.com",
                 "senha" => "789101"
             ]
+            
         ];
 
 
         // echo var_dump($listaDeUsuarios[$usuario]);
-        echo $listaDeUsuarios["usuario1"]["nome"];
+        echo $listaDeUsuarios["usuario1"]["nome"]."<br>";
+        echo "<pre>";
         var_dump($listaDeUsuarios);
+        echo "</pre>";
     
-
-    ?>
-
-    <br>
-
-    <h1>Testando aula</h1>
-    
-    <?php
-
-        $diaEnsolarado = true;
-        if ($diaEnsolarado == true) {
-            echo "Vamos para a praia!";
-        } else {
-            echo "Cuidado com a chuva";
-        }
-    
-    ?>
-    <br>
-    <?php
-
-        $idade = 25;
-        if ($idade < 16){
-            echo "Não pode votar";
-        } else if ($idade ==16 && $idadae==17) {
-            echo "Voto opcional";
-        } elseif ($idade>=18){
-            echo "Voto obrigatório";
-        }   
-    ?>
-    <br>
-    <br>
-    <?php
-        $numero1 = 32;
-        $numero2 = 58;
-
-        $maior = $numero1 > $numero2 ? $numero1 : $numero2;
-        echo $maior;
-    ?>
-
-    <hr>
-
-    <h1>FOR</h1>
-
-    <?php
-        $lista = ["pao", "Leite", "Suco", "Bolacha"];
-        $lista[] = "Sabao";
-        echo "Lista de compras <br>";
-        for ($i=0; $i<count($lista); $i++){
-            echo $lista [$i]."<br>";
-        }
-    
-    ?>
-
-    <hr>
-    <h1>WHILE E DO-WHILE</h1>
-
-    <?php
-
-        $array = ["Opa", "Olá", "Eu sou o Vinicíus", "chega"];
         $i=0;
-        shuffle($array);
-        while($array[$i]!="chega"){
-            echo $array[$i]."<br>";
+       
+        while ($i<count($listaDeUsuarios)){
+            $number = $i+1;
+            foreach($listaDeUsuarios["usuario$number"] as $indice => $valor){
+                echo $valor."<br>";
+            }
             $i++;
         }
-    
-    ?>
-    <br>
-    <br>
-    <?php
-
-        $array = ["Opa", "Olá", "Eu sou o Vinicíus", "chega"];
-        $i=0;
-        do{
-            echo $array[$i]."<br>";
-            $i++;
+        foreach($listaDeUsuarios["usuario1"] as $indice => $valor){
+            echo $indice;
         }
-        while($array[$i]!="chega")
-
-    ?>
-
-    <?php
-        $quantidade = 5;
-        while ($quantidade >0){
-            echo $quantidade."<br>";
-            $quantidade--;
+        foreach($listaDeUsuarios as $indice => $valor){
+            echo $indice;
         }
-    
+        
+        echo"<h2>Monta tabela</h2>";
+
     ?>
     <hr>
-    <h1>Keyowrds</h1>
+    <table>
+
+        <tr>
+            <th></th>
+            <?php foreach($listaDeUsuarios["usuario1"] as $indice => $valor){?>
+            <th><?php echo $indice;?></th> <?php } ?>
+        </tr>
+        <tr>
+            <?php
+                $i=0;
+                while ($i<count($listaDeUsuarios)){
+                    echo "<tr>";
+                    $number = $i+1;
+                    echo "<th>usuario$number</th>";
+                    foreach($listaDeUsuarios["usuario$number"] as $indice => $valor){
+                        echo "<td>".$valor."</td>";
+                    }
+                    $i++;
+                    echo "<tr>";
+                }
+        
+            
+            
+            ?>
+            
+
+
+
+        </tr>
     
-    <?php
-        $i=0;
-        for($i=0; $i<5;$i++){
-            if($i==3){
-            break;
-            }
-            echo "valor do i:".$i; 
-        }
-    ?>
-
-    <?php
-        $i=0;
-        for($i=0; $i<5;$i++){
-            if($i==3){
-            continue;
-            }
-            echo "valor do i:".$i; 
-        }
-    ?>
-
-    <hr>
-    <h1>foreach</h1>
-
-    <?php?>
+    </table>
+    
 
     
 
